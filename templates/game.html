@@ -1,0 +1,60 @@
+{% include 'base.html' %}
+{% include 'index_nav_2.html' %}
+{% load static %}
+<script type="text/javascript">
+    let count = 0;
+    function increment() {
+        if (count == 0) {
+            var image = document.getElementById("img1");
+            image.src = '';
+        }
+        count++
+        document.getElementById("score").innerHTML = "Score: " + count;
+        var attack = ghoulAttack()
+        if (attack) {
+             count = 0;
+             var image = document.getElementById("img1");
+             image.src = '{% static 'main/Ghoul.jpg' %}';
+             document.getElementById("score").innerHTML = "Score: 0\nThe Ghoul has eaten you!\nTry Again!";
+        }
+    }
+    function ghoulAttack() {
+        var rng = Math.floor(Math.random() * (100));
+        if (rng < 85) {
+            return false
+        }
+        return true
+    }
+    function finish(score) {
+        document.getElementById("finished").innerHTML = "You have escaped the wrath of The Ghoul!";
+        document.getElementById("final-score").innerHTML = count
+    }
+    function openForm() {
+        document.getElementById("usernameForm").style.visibility = "visible";
+    }
+</script>
+    <body>
+        <div class="container">
+            <h1>The Ghoul!</h1>
+            <h2>Don't get Caught!</h2>
+            <div class="container">
+                <div class="center">
+                    <div class="game-box">
+                        <img id="img1">
+                        <p id="score">Score:</p>
+                        <p id="finished"></p>
+                        <form action="" method="POST" id="usernameForm" style = "visibility: hidden">{% csrf_token %}
+                            <p><label for="username">Username:</label><input type="text" name="username"/></p>
+                            <span id="final-score" name="score"></span>
+                            <button type = "submit" class = "button" value="Scoreboard">Submit</button>
+                        </form>
+                    </div>
+                </div>
+                <div class="center-button">
+                    <button class="button" onClick="increment()">Add</button>
+                    <button class="button" onClick="finish(); openForm()">Finish</button>
+                </div>
+            </div>
+        </div>
+    </body>
+{% include 'footer.html' %}

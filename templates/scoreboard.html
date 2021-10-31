@@ -1,0 +1,27 @@
+{% include 'base.html' %}
+{% include 'index_nav_3.html' %}
+<script type="text/javascript">
+    let i = 0;
+    function increment() {
+        i++
+        document.getElementById("rank").innerHTML = i;
+    }
+</script>
+<title>Scoreboard</title>
+    <div class="container">
+        <h1>Scoreboard:</h1>
+        <table class="center-table table">
+            <tr>
+                <th>Username:</th>
+                <th>Score:</th>
+            </tr>
+            {% for score in all_scores %}
+                <tr>
+                    <td><h3>{{ score.username }}</h3></td>
+                    <td><h3>{{ score.score }}</h3></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+{% include 'footer.html' %}

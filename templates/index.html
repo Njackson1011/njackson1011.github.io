@@ -1,0 +1,27 @@
+{% include 'base.html' %}
+{% include 'index_nav_1.html' %}
+    <body>
+        <div class="container">
+            <h1>The Ghoul!</h1>
+            <h2>A hackathon project by Robert Wilk and Nick Jackson</h2>
+            <div class="container">
+                <p>Welcome to The Ghoul! This is a short game that plays similar to Black Jack.</p>
+                <p>The goal of the game is to keep adding to your score while being cautious of
+                    <strong>The Ghoul</strong></p>
+                <ul>
+                    <li><u>There are 2 buttons: Add, Take:</u></li>
+                    <li>Add: Add 1 point to your total score</li>
+                    <li>Finish: Take your current score and end the game</li>
+                </ul>
+                <p>When you add to your score, there is a random chance that <strong>The Ghoul</strong>
+                    will jump out and take all of your points!<br>Highscores get recorded to the leaderboard!</p>
+                <div class="container">
+                    <div class="center-button">
+                        <button class="button" onclick="location.href = '/game'">Play Game!</button>
+                        <button class="button" onclick="location.href = '/scoreboard'">View The Scoreboard!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+{% include 'footer.html' %}
